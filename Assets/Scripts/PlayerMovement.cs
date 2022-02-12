@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
+    private int pizzaCount = 0;
 
     // Use this for initialization
     void Start () {
@@ -76,9 +77,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Pizza") {
-        Destroy(other.gameObject);
-        animator.SetTrigger("Eat");
+            Destroy(other.gameObject);
+            pizzaCount++;
+            animator.SetTrigger("Eat");
+            
+            if(pizzaCount%3 == 0) animator.SetTrigger("Celebrate");
         }
-        Debug.Log("Yes");
+        Debug.Log("Cat hit Object");
     }
 }
