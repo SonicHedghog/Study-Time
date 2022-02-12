@@ -14,8 +14,6 @@ public class CatWorld : MonoBehaviour
 
     void Start () {
         screenBounds = MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, MainCamera.transform.position.z));
-        // objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
-        // objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2
 }
 
     // Update is called once per frame
@@ -23,11 +21,7 @@ public class CatWorld : MonoBehaviour
     {
         if (Random.value < .03)
         {
-            var pizza = Instantiate(prefab, 
-                new Vector3(Random.Range(screenBounds.x * -1 + (objectWidth/1.5f), 
-                screenBounds.x - (objectWidth/1.5f)),
-                screenBounds.y - (objectHeight/2f), 0), 
-                Quaternion.identity);
+            var pizza = Instantiate(prefab, new Vector3(Random.Range(screenBounds.x * -1, screenBounds.x), screenBounds.y, 0), Quaternion.identity);
 
             pizza.GetComponent<Fall>().SetCamera(MainCamera);
         }
