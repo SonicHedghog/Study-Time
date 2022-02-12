@@ -12,13 +12,12 @@ public class Fall : MonoBehaviour
 
     private float fallX;
     private float fallY;
-    Vector3 viewPos;
 
 
 
     // Start is called before the first frame update
     void Start () {
-        Vector3 viewPos = transform.position;
+        
 
         screenBounds = MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, MainCamera.transform.position.z));
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
@@ -32,6 +31,7 @@ public class Fall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 viewPos = transform.position;
         if(!(viewPos.y <= screenBounds.y * -1))
         {
             viewPos.y-= fallY;
