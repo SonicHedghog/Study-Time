@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public Animator animator;
     float horizontalMove = 0f;
     float verticalMove = 0f;
     public float runSpeed = .3f;
@@ -26,10 +27,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        animator.SetFloat("Speed", horizontalMove);
         Debug.Log("Horizontal Movement: " + horizontalMove);
     
         verticalMove = Input.GetAxisRaw("Vertical") * flySpeed;
+        animator.SetFloat("Lift", verticalMove);
         Debug.Log("Vertical Movement: " + verticalMove);
+
+        if(Input.GetButton("Jump"))
+            animator.SetTrigger("Eat");
     }
 
     // Update is called once per frame
