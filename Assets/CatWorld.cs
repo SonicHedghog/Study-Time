@@ -8,6 +8,7 @@ public class CatWorld : MonoBehaviour
 
     public Transform prefab;
     public Camera MainCamera;
+    public GameObject game;
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
@@ -24,6 +25,15 @@ public class CatWorld : MonoBehaviour
             var pizza = Instantiate(prefab, new Vector3(Random.Range(screenBounds.x * -1, screenBounds.x), screenBounds.y, 0), Quaternion.identity);
 
             pizza.GetComponent<Fall>().SetCamera(MainCamera);
+        }
+
+        if(this.gameObject.tag == "Menu")
+        {
+            if(Input.GetButton("Jump"))
+            {
+                game.SetActive(true);
+                this.gameObject.SetActive(false);
+            }
         }
     }
 }
