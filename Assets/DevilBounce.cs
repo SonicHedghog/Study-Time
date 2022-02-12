@@ -5,8 +5,8 @@ using UnityEngine;
 public class DevilBounce : MonoBehaviour
 {
     public float runSpeed = .3f;
-
     public Camera MainCamera;
+    public GameObject deathScreen;
     private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
@@ -55,6 +55,7 @@ public class DevilBounce : MonoBehaviour
         else if (other.gameObject.tag == "Player")
         {
             Destroy(other.gameObject);
+            deathScreen.SetActive(true);
         }
 
         Debug.Log("Devil hit Object");

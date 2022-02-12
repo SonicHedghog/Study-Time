@@ -85,4 +85,9 @@ public class PlayerMovement : MonoBehaviour
         }
         Debug.Log("Cat hit Object");
     }
+
+    public void SetCamera(Camera cam)
+    {
+        MainCamera = cam;
+    }
 }
