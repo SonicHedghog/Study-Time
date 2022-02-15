@@ -239,6 +239,7 @@ MonoBehaviour:
   Pinky: {fileID: 820556277}
   Blinky: {fileID: 1074637491}
   Clyde: {fileID: 1876126193}
+  PacMan: {fileID: 40547577}
   runSpeed: 4
   rotationalSpeed: 4.5
   MainCamera: {fileID: 671754049}
@@ -446,7 +447,6 @@ GameObject:
   - component: {fileID: 653441215}
   - component: {fileID: 653441218}
   - component: {fileID: 653441217}
-  - component: {fileID: 653441219}
   m_Layer: 0
   m_Name: Pellet
   m_TagString: Pellet
@@ -554,18 +554,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.00087454286}
   serializedVersion: 2
   m_Radius: 0.032809317
---- !u!114 &653441219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653441214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48cdda0b547a28442ab0f9b182cd85f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &671754047
 GameObject:
   m_ObjectHideFlags: 0
