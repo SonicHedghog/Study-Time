@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blinky
+  m_Name: Clyde
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: e071300b65f044747b1c788cc577caaa, type: 3}
+      value: {fileID: 21300000, guid: aafd1c8e1b28dda4da7e9b9dcbaba69c, type: 3}
     - time: 0.1
-      value: {fileID: 21300000, guid: 24a5b09ee3007e24d88f366a6171554d, type: 3}
+      value: {fileID: 21300000, guid: e2f9535e9a5654247969b8ddfeddfd02, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: e071300b65f044747b1c788cc577caaa, type: 3}
-    - {fileID: 21300000, guid: 24a5b09ee3007e24d88f366a6171554d, type: 3}
+    - {fileID: 21300000, guid: aafd1c8e1b28dda4da7e9b9dcbaba69c, type: 3}
+    - {fileID: 21300000, guid: e2f9535e9a5654247969b8ddfeddfd02, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
