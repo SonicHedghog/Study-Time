@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PacManController : MonoBehaviour
 {
-    public Animator animator;
+    public Animator Inky;
+    public Animator Pinky;
+    public Animator Blinky;
+    public Animator Clyde;
+    public Animator PacMan;
     float rotationalMove = 0f;
     public float runSpeed = .3f;
     public float rotationalSpeed = .3f;
@@ -14,6 +18,7 @@ public class PacManController : MonoBehaviour
     private float objectWidth;
     private float objectHeight;
     private int pizzaCount = 0;
+    private bool hasPowerPellet = false;
 
     // Use this for initialization
     void Start () {
@@ -66,5 +71,29 @@ public class PacManController : MonoBehaviour
 
         transform.Rotate(0, 0, rotationalMove);
         transform.position += transform.right * Time.deltaTime * runSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Pellet") Destroy(other.gameObject);
+
+        if (other.gameObject.tag == "Power Pellet") {
+            Destroy(other.gameObject);
+            hasPowerPellet = true;
+
+            Inky.SetBool("isScared", true);
+            Pinky.SetBool("isScared", true);
+            Blinky.SetBool("isScared", true);
+            Clyde.SetBool("isScared", true);
+            
+        }
+        if (other.gameObject.tag == "Ghost") {
+            if(hasPowerPellet) Destroy(other.gameObject);
+            else
+            {
+                PacMan.SetTrigger("isPacManDead");
+                Destroy(this);
+            }
+        }
+        Debug.Log("PacMan hit Object");
     }
 }

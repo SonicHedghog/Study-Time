@@ -7,6 +7,9 @@ TagManager:
   - Pizza
   - Devil
   - Menu
+  - Ghost
+  - Pellet
+  - Power Pellet
   layers:
   - Default
   - TransparentFX
