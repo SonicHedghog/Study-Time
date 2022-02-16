@@ -91,9 +91,20 @@ public class PacManController : MonoBehaviour
             else
             {
                 PacMan.SetTrigger("isPacManDead");
+                Time.timeScale = 0;
                 Destroy(this);
             }
         }
         Debug.Log("PacMan hit Object");
+    }
+
+    
+    public void SetPublicVariables(Camera cam, Transform inky, Transform pinky, Transform blinky, Transform clyde)
+    {
+        MainCamera = cam;
+        Inky = inky.GetComponent<Animator>();
+        Pinky = pinky.GetComponent<Animator>();
+        Blinky = blinky.GetComponent<Animator>();
+        Clyde = clyde.GetComponent<Animator>();
     }
 }

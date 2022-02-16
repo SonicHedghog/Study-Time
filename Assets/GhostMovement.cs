@@ -71,4 +71,9 @@ public class GhostMovement : MonoBehaviour
         rotationalMove = 0;
         transform.position += transform.right * Time.deltaTime * runSpeed;
     }
+
+    public void SetCamera(Camera cam)
+    {
+        MainCamera = cam;
+    }
 }
