@@ -20,7 +20,7 @@ public class PacManWorld : MonoBehaviour
     private float pauseEndTime = 0;
     private bool starteEndTime = true;
     private Transform pacman;
-    void Start()
+    void OnEnable()
     {
         screenBounds = MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, MainCamera.transform.position.z));
         
@@ -40,7 +40,9 @@ public class PacManWorld : MonoBehaviour
         pacman = Instantiate(PacMan, new Vector3(0,0,0), Quaternion.identity);
         pacman.GetComponent<PacManController>().SetPublicVariables(MainCamera, inky, pinky, blinky, clyde);
 
-         Time.timeScale = 0f;
+        Time.timeScale = 0f;
+        pauseEndTime = 0;
+        starteEndTime = true;
     }
 
     // Update is called once per frame
