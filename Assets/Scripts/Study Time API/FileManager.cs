@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-public class FileManager : MonoBehaviour
+public class FileManager
 {
     public static string[] lessonFiles;
     public static string[] path;
