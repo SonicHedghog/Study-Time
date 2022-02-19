@@ -9,7 +9,7 @@ namespace StudyTimeAPI
     public class FileManager
     {
         public static string[] lessonFiles;
-        public static string[] path;
+        public static string path;
         public static Dictionary<string, string>  configs;
 
         // Get List of Subjects
@@ -39,10 +39,10 @@ namespace StudyTimeAPI
         // Get Specific Lesson
         public void GetLesson(string subject, string lesson)
         {
-            path = new string[]{Application.streamingAssetsPath, "Subjects", subject, lesson};
+            path = Path.Combine(new string[]{Application.streamingAssetsPath, "Subjects", subject, lesson});
             // = AssetDatabase.GetSubFolders("Assets");
 
-            lessonFiles =  Directory.GetFiles(Path.Combine(path));
+            lessonFiles =  Directory.GetFiles(path);
             Debug.Log("Lesson Files Set");
 
             LoadConfig();
@@ -55,7 +55,7 @@ namespace StudyTimeAPI
             
             if(Application.platform == RuntimePlatform.Android)
             {
-                var www = UnityEngine.Networking.UnityWebRequest.Get(Path.Combine(path));
+                var www = UnityEngine.Networking.UnityWebRequest.Get(path);
                 www.SendWebRequest();
                 while (!www.isDone)
                 {
@@ -65,7 +65,7 @@ namespace StudyTimeAPI
             }
             else
             {
-                fileLines = File.ReadAllLines(Path.Combine(path)).ToList();
+                fileLines = File.ReadAllLines(path).ToList();
             }
 
             foreach(string config in fileLines)
