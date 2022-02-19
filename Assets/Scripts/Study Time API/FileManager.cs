@@ -44,9 +44,11 @@ namespace StudyTimeAPI
 
             lessonFiles =  Directory.GetFiles(Path.Combine(path));
             Debug.Log("Lesson Files Set");
+
+            LoadConfig();
         }
 
-        public void LoadConfig()
+        private void LoadConfig()
         {
             List<string> fileLines;
             configs = new Dictionary<string, string>();
@@ -71,6 +73,8 @@ namespace StudyTimeAPI
                 string[] cutPoint = config.Split('=');
                 configs.Add(cutPoint[0], cutPoint[1]);
             }
+
+            Debug.Log("Loaded configs");
         }
     }
 }
