@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 namespace StudyTimeAPI
 {
@@ -9,6 +10,7 @@ namespace StudyTimeAPI
     {
         public static string[] lessonFiles;
         public static string[] path;
+        public static Dictionary<string, string>  configs;
 
         // Get List of Subjects
         public string[] GetSubjects()
@@ -42,6 +44,33 @@ namespace StudyTimeAPI
 
             lessonFiles =  Directory.GetFiles(Path.Combine(path));
             Debug.Log("Lesson Files Set");
+        }
+
+        public void LoadConfig()
+        {
+            List<string> fileLines;
+            configs = new Dictionary<string, string>();
+            
+            if(Application.platform == RuntimePlatform.Android)
+            {
+                var www = UnityEngine.Networking.UnityWebRequest.Get(Path.Combine(path));
+                www.SendWebRequest();
+                while (!www.isDone)
+                {
+                }
+                fileLines = www.downloadHandler.text.Split('\n').ToList();
+                Debug.Log(www.downloadHandler.text);
+            }
+            else
+            {
+                fileLines = File.ReadAllLines(Path.Combine(path)).ToList();
+            }
+
+            foreach(string config in fileLines)
+            {
+                string[] cutPoint = config.Split('=');
+                configs.Add(cutPoint[0], cutPoint[1]);
+            }
         }
     }
 }
