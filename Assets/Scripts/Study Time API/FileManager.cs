@@ -5,6 +5,7 @@ using System.IO;
 public class FileManager : MonoBehaviour
 {
     public static string[] lessonFiles;
+    public static string[] path;
 
     // Get List of Subjects
     public string[] GetSubjects()
@@ -33,10 +34,10 @@ public class FileManager : MonoBehaviour
     // Get Specific Lesson
     public void GetLesson(string subject, string lesson)
     {
-        string[] paths = {Application.streamingAssetsPath, "Subjects", subject, lesson};
+        path = new string[]{Application.streamingAssetsPath, "Subjects", subject, lesson};
         // = AssetDatabase.GetSubFolders("Assets");
 
-        lessonFiles =  Directory.GetFiles(Path.Combine(paths));
+        lessonFiles =  Directory.GetFiles(Path.Combine(path));
         Debug.Log("Lesson Files Set");
     }
 }
