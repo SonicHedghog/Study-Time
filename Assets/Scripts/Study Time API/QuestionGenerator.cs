@@ -8,5 +8,6 @@ namespace StudyTimeAPI
     {
         public QuestionGenerator() { }
         public abstract string GetQuestion();
+        public abstract bool IsComplete();
     }
 }
