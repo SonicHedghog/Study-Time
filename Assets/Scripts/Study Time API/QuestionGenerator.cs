@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class QuestionGenerator
+namespace StudyTimeAPI
 {
-    public QuestionGenerator() { }
-    public abstract string GetQuestion();
+    public abstract class QuestionGenerator
+    {
+        public QuestionGenerator() { }
+        public abstract string GetQuestion();
+    }
 }

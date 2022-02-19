@@ -2,42 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-public class FileManager
+
+namespace StudyTimeAPI
 {
-    public static string[] lessonFiles;
-    public static string[] path;
-
-    // Get List of Subjects
-    public string[] GetSubjects()
+    public class FileManager
     {
-        string[] paths = {Application.streamingAssetsPath, "Subjects"};
-        // = AssetDatabase.GetSubFolders("Assets");
+        public static string[] lessonFiles;
+        public static string[] path;
 
-        var folders =  Directory.GetDirectories(Path.Combine(paths));
-        Debug.Log("Retrived " + folders.Length + "Subjects");
+        // Get List of Subjects
+        public string[] GetSubjects()
+        {
+            string[] paths = {Application.streamingAssetsPath, "Subjects"};
+            // = AssetDatabase.GetSubFolders("Assets");
 
-        return folders;
-    }
+            var folders =  Directory.GetDirectories(Path.Combine(paths));
+            Debug.Log("Retrived " + folders.Length + "Subjects");
 
-    // Get List of Lessonss
-    public string[] GetLessons(string subject)
-    {
-        string[] paths = {Application.streamingAssetsPath, "Subjects", subject};
-        // = AssetDatabase.GetSubFolders("Assets");
+            return folders;
+        }
 
-        var folders =  Directory.GetDirectories(Path.Combine(paths));
-        Debug.Log("Retrived " + folders.Length + "Lessons");
+        // Get List of Lessonss
+        public string[] GetLessons(string subject)
+        {
+            string[] paths = {Application.streamingAssetsPath, "Subjects", subject};
+            // = AssetDatabase.GetSubFolders("Assets");
 
-        return folders;
-    }
+            var folders =  Directory.GetDirectories(Path.Combine(paths));
+            Debug.Log("Retrived " + folders.Length + "Lessons");
 
-    // Get Specific Lesson
-    public void GetLesson(string subject, string lesson)
-    {
-        path = new string[]{Application.streamingAssetsPath, "Subjects", subject, lesson};
-        // = AssetDatabase.GetSubFolders("Assets");
+            return folders;
+        }
 
-        lessonFiles =  Directory.GetFiles(Path.Combine(path));
-        Debug.Log("Lesson Files Set");
+        // Get Specific Lesson
+        public void GetLesson(string subject, string lesson)
+        {
+            path = new string[]{Application.streamingAssetsPath, "Subjects", subject, lesson};
+            // = AssetDatabase.GetSubFolders("Assets");
+
+            lessonFiles =  Directory.GetFiles(Path.Combine(path));
+            Debug.Log("Lesson Files Set");
+        }
     }
 }
