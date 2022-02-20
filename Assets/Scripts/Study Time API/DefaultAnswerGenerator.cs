@@ -27,6 +27,7 @@ public class DefaultAnswerGenerator : AnswerGenerator
             filelines = File.ReadAllLines(Path.Combine(FileManager.path, "default_answers.in")).ToList();
         }
 
+        Answers = new Dictionary<string, List<string>>();
         foreach(string question in questions)
         {
             List<string> answers = new List<string>();
