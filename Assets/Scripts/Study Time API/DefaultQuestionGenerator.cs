@@ -31,7 +31,7 @@ public class DefaultQuestionGenerator : QuestionGenerator
         }
     }
 
-    public override string GetQuestion(Object o = null)
+    public override string GetQuestion(System.Object o = null)
     {
         if(!RandomSelect && index < Questions.Count) 
             return Questions[index++];
