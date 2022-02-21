@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
 
 namespace StudyTimeAPI
 {
-    public class FileManager
+    public class FileManager : MonoBehaviour
     {
         public static string[] lessonFiles;
         public static string path;
@@ -27,19 +26,20 @@ namespace StudyTimeAPI
         // Get List of Lessonss
         public string[] GetLessons(string subject)
         {
-            string[] paths = {Application.streamingAssetsPath, "Subjects", subject};
+            path = Path.Combine(new string[]{Application.streamingAssetsPath, "Subjects", subject});
             // = AssetDatabase.GetSubFolders("Assets");
 
-            var folders =  Directory.GetDirectories(Path.Combine(paths));
+            string[] folders =  Directory.GetDirectories(path);
             Debug.Log("Retrived " + folders.Length + "Lessons");
+
 
             return folders;
         }
 
         // Get Specific Lesson
-        public void GetLesson(string subject, string lesson)
+        public void GetLesson(string lesson)
         {
-            path = Path.Combine(new string[]{Application.streamingAssetsPath, "Subjects", subject, lesson});
+            path = Path.Combine(new string[]{path, lesson});
             // = AssetDatabase.GetSubFolders("Assets");
 
             lessonFiles =  Directory.GetFiles(path);
