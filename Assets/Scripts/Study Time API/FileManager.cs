@@ -5,39 +5,38 @@ using System.Linq;
 
 namespace StudyTimeAPI
 {
-    public class FileManager : MonoBehaviour
+    public class FileManager
     {
         public static string[] lessonFiles;
+        public static string[] lessons;
         public static string path;
         public static Dictionary<string, string>  configs;
 
         // Get List of Subjects
-        public string[] GetSubjects()
+        public static string[] GetSubjects()
         {
-            string[] paths = {Application.streamingAssetsPath, "Subjects"};
+            string loc = Path.Combine(new string[]{Application.streamingAssetsPath, "Subjects"});
             // = AssetDatabase.GetSubFolders("Assets");
 
-            var folders =  Directory.GetDirectories(Path.Combine(paths));
-            Debug.Log("Retrived " + folders.Length + "Subjects");
+            Debug.Log(loc);
+            var folders =  Directory.GetDirectories(loc).Select(f => f.Remove(f.IndexOf(loc), loc.Length + 1)).ToArray();
+            Debug.Log("Retrived " + folders.Length + " Subjects");
 
             return folders;
         }
 
         // Get List of Lessonss
-        public string[] GetLessons(string subject)
+        public static void SetSubject(string subject)
         {
             path = Path.Combine(new string[]{Application.streamingAssetsPath, "Subjects", subject});
             // = AssetDatabase.GetSubFolders("Assets");
 
-            string[] folders =  Directory.GetDirectories(path);
-            Debug.Log("Retrived " + folders.Length + "Lessons");
-
-
-            return folders;
+            lessons =  Directory.GetDirectories(path).Select(f => f.Remove(f.IndexOf(path), path.Length + 1)).ToArray();;
+            Debug.Log("Retrived " + lessons.Length + " Lessons");
         }
 
         // Get Specific Lesson
-        public void GetLesson(string lesson)
+        public static void SetLesson(string lesson)
         {
             path = Path.Combine(new string[]{path, lesson});
             // = AssetDatabase.GetSubFolders("Assets");
@@ -48,7 +47,7 @@ namespace StudyTimeAPI
             LoadConfig();
         }
 
-        private void LoadConfig()
+        private static void LoadConfig()
         {
             List<string> fileLines;
             configs = new Dictionary<string, string>();
@@ -65,7 +64,7 @@ namespace StudyTimeAPI
             }
             else
             {
-                fileLines = File.ReadAllLines(path).ToList();
+                fileLines = File.ReadAllLines(Path.Combine(new string[]{path, ".config"})).ToList();
             }
 
             foreach(string config in fileLines)
