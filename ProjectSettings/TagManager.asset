@@ -12,6 +12,7 @@ TagManager:
   - Power Pellet
   - Subject
   - Lesson
+  - Back
   layers:
   - Default
   - TransparentFX
