@@ -1,5 +1,6 @@
 ﻿using StudyTimeAPI;
 using UnityEngine;
+using System.IO;
 using UnityEngine.SceneManagement;
 
 public class AdvanceButton : MonoBehaviour
@@ -10,6 +11,7 @@ public class AdvanceButton : MonoBehaviour
     public bool isBack = false;
     public bool getSubject = false;
     public bool getLesson = false;
+    public bool dropEndLocation = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,8 @@ public class AdvanceButton : MonoBehaviour
         else
         {
             if(getSubject) FileManager.SetSubject(this.gameObject.name);
-            else if(getLesson) FileManager.SetLesson(this.gameObject.name);
+            if(getLesson) FileManager.SetLesson(this.gameObject.name);
+            if(dropEndLocation) FileManager.path = Directory.GetParent(FileManager.path).FullName;
             scene.SetActive(true);
             thisScene.SetActive(false);
         }

@@ -10,6 +10,8 @@ TagManager:
   - Ghost
   - Pellet
   - Power Pellet
+  - Subject
+  - Lesson
   layers:
   - Default
   - TransparentFX
