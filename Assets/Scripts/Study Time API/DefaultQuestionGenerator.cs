@@ -13,7 +13,9 @@ public class DefaultQuestionGenerator : QuestionGenerator
 
     public DefaultQuestionGenerator()
     {
-        RandomSelect = "true" == FileManager.configs["random"].ToLower();
+        // Change later to RandomSelect = "true" == FileManager.configs["random"].ToLower();
+        
+        RandomSelect = true;
         
         if(Application.platform == RuntimePlatform.Android)
         {

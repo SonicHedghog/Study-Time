@@ -25,6 +25,7 @@ public class DefaultAnswerGenerator : AnswerGenerator
         else
         {
             filelines = File.ReadAllLines(Path.Combine(FileManager.path, "default_answers.in")).ToList();
+            Debug.Log(filelines.Count);
         }
 
         Answers = new Dictionary<string, List<string>>();
@@ -32,14 +33,16 @@ public class DefaultAnswerGenerator : AnswerGenerator
         {
             List<string> answers = new List<string>();
 
-            while (filelines.Count > 0 && !filelines[0].Contains("@Question"))
+            for (int c = 0; filelines.Count > 0 && c < 1; c++)
             {
                 answers.Add(filelines[0]);
+                Debug.Log("Lookn " + filelines[0]);
                 filelines.RemoveAt(0);
             }
 
-            if(filelines.Count != 0) filelines.RemoveAt(0);
+            // if(filelines.Count != 0) filelines.RemoveAt(0);
             Answers.Add(question, answers);
+            Debug.Log("Tests a" + Answers[question].Count);
         }
     }
 
