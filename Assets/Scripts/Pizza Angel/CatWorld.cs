@@ -13,10 +13,12 @@ public class CatWorld : MonoBehaviour
     public GameObject game;
     public static GameObject panel1;
     public static GameObject panel2;
+    public static GameObject panel3;
     public static GameObject ui;
     public static InputField answer;
     public GameObject UEpanel1;
     public GameObject UEpanel2;
+    public GameObject UEpanel3;
     public GameObject UEui;
     public InputField UEanswer;
     private Vector2 screenBounds;
@@ -30,6 +32,7 @@ public class CatWorld : MonoBehaviour
         ui = UEui;
         panel1 = UEpanel1;
         panel2 = UEpanel2;
+        panel3 = UEpanel3;
         answer = UEanswer;
 
         if(FileManager.configs["questions"] == "default")
@@ -74,13 +77,31 @@ public class CatWorld : MonoBehaviour
     
     public static void AskQuestionDQ()
     {
+        panel1.GetComponent<Text>().text = questions.GetQuestion();
+        Debug.Log(panel1.GetComponent<Text>().text);
+
+        if(panel1.GetComponent<Text>().text == "")
+        {
+            GameObject.Find("Lemur").SetActive(false);
+            Destroy(GameObject.Find("Cat"));
+            panel3.SetActive(true);
+
+            if(FileManager.configs["questions"] == "default")
+                questions = new DefaultQuestionGenerator();
+            
+            if(FileManager.configs["answers"] == "default")
+                answers = new DefaultAnswerGenerator(questions.GetQuestionList());
+            else if(FileManager.configs["answers"] == "multiple_choice")
+                answers = new MultipleChoiceAnswerGenerator(questions.GetQuestionList());
+            return;
+        }
+
         Time.timeScale = 0;
         ui.SetActive(true);
         panel1.SetActive(true);
         answer.gameObject.SetActive(true);
         answer.enabled = true;
 
-        panel1.GetComponent<Text>().text = questions.GetQuestion();
         Debug.Log("Correct Answer: " + answers.GetAllAnswerLists()[panel1.GetComponent<Text>().text][0]);
     }
 

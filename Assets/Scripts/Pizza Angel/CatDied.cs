@@ -14,6 +14,7 @@ public class CatDied : MonoBehaviour
     {
         if(Input.GetButton("Jump"))
         {
+            lemur.SetActive(true);
             lemur.transform.position = new Vector3(-7.74f, 4.63f, 0.6992f);
             lemur.transform.eulerAngles = new Vector3(0,0,0);
 

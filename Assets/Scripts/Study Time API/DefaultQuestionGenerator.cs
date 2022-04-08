@@ -40,9 +40,14 @@ public class DefaultQuestionGenerator : QuestionGenerator
 
         index = Random.Range(0, Questions.Count);
 
-        string question = Questions[index];
-        Questions.RemoveAt(index);
-        return question;
+        if(Questions.Count > 0)
+        {
+            string question = Questions[index];
+            Questions.RemoveAt(index);
+            return question;
+        }
+
+        return null;
     }
 
     public override List<string> GetQuestionList()
