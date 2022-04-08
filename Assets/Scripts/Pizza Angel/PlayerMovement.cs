@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Eat");
             
             if(pizzaCount%3 == 0) animator.SetTrigger("Celebrate");
+            if(pizzaCount%5 == 0) CatWorld.AskQuestion();
         }
         Debug.Log("Cat hit Object");
     }

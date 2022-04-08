@@ -55,4 +55,26 @@ public class DefaultAnswerGenerator : AnswerGenerator
     {
         return Answers[(string) o];
     }
+
+    public override bool CheckAnswer(string question, string userAnswer)
+    {
+        string CorrectAnswer = Answers[question][0].ToLower();
+
+        int count = 0;
+        userAnswer =userAnswer.ToLower();
+
+        foreach(string word in userAnswer.Split(' '))
+        {
+            if(CorrectAnswer.Contains(word)) count++;
+            Debug.Log(word + " vs " +  CorrectAnswer);
+        }
+
+        Debug.Log("Words in answer " + count + " and total " + CorrectAnswer.Split().Length/2);
+
+        if(count > CorrectAnswer.Split().Length/2 && CorrectAnswer.Split().Length > 4 ||
+            CorrectAnswer == userAnswer)
+            return true;
+
+        return false;
+    }
 }
