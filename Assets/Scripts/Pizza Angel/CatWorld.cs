@@ -1,6 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using StudyTimeAPI;
 
 public class CatWorld : MonoBehaviour
@@ -36,6 +37,9 @@ public class CatWorld : MonoBehaviour
         
         if(FileManager.configs["answers"] == "default")
             answers = new DefaultAnswerGenerator(questions.GetQuestionList());
+        else if(FileManager.configs["answers"] == "multiple_choice")
+            answers = new MultipleChoiceAnswerGenerator(questions.GetQuestionList());
+
 }
 
     // Update is called once per frame
@@ -60,7 +64,7 @@ public class CatWorld : MonoBehaviour
 
     public static void AskQuestion()
     {
-        if(FileManager.configs["questions"] == "default") AskQuestionDQ();
+        if(FileManager.configs["answers"] == "default") AskQuestionDQ();
     }
 
     public void GetAnswer()
