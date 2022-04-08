@@ -31,10 +31,10 @@ public class CatWorld : MonoBehaviour
         panel2 = UEpanel2;
         answer = UEanswer;
 
-        if(FileManager.configs["questions"] == "default") AskQuestionDQ();
+        if(FileManager.configs["questions"] == "default")
             questions = new DefaultQuestionGenerator();
         
-        if(FileManager.configs["answers"] == "default") GetAnswerDA();
+        if(FileManager.configs["answers"] == "default")
             answers = new DefaultAnswerGenerator(questions.GetQuestionList());
 }
 
