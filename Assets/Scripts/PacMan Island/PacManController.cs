@@ -91,6 +91,7 @@ public class PacManController : MonoBehaviour
             else
             {
                 PacMan.SetTrigger("isPacManDead");
+                PacManWorld.canGo = false;
                 Time.timeScale = 0;
                 Destroy(this);
             }
