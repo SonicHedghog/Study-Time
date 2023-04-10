@@ -84,6 +84,7 @@ public class CatWorld : MonoBehaviour
         {
             GameObject.Find("Lemur").SetActive(false);
             Destroy(GameObject.Find("Cat"));
+            Destroy(GameObject.Find("Cat(Clone)"));
             panel3.SetActive(true);
 
             if(FileManager.configs["questions"] == "default")
